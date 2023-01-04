@@ -1,0 +1,27 @@
+img{
+    width:8rem;
+    margin-left:20px
+}
+
+.back{
+    font-size:1.5rem
+}
+
+header{
+    background-color: #fdd900;
+    box-shadow: 5px 5px 5px rgb(186, 184, 184);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:1rem 0
+}
+header a {
+    margin-right:20px ;
+    text-decoration: none;
+    color:rgb(96, 93, 93);
+    transition: .5s all linear;
+}
+
+header a:hover{
+   color:black
+}

@@ -1,0 +1,48 @@
+.container-registration{
+    top:20vh;
+    margin: 5rem auto 20rem;
+    background-color: white;
+    width: 55rem;
+    border: 1px solid #d2d3d9;
+    box-shadow: 0 15px 25px rgba(241,237,175,.7);
+    border-radius: 10px
+}
+
+section h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin: 2.7rem 0 2rem;
+}
+
+
+.textfield_input{
+    font-size:1.5rem !important;
+}
+
+.submit {
+    display: block;
+    width: 41rem;
+    background-color: white;
+    padding: 1.5rem 0;
+    font-size: 2rem;
+    margin: 3rem auto 3rem auto;
+    color: #48494c;
+    border: 2px solid #fdd900;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s linear
+}
+
+.submit:hover {
+    background-color: #fdd900;
+}
+
+@media (max-width:600px) {
+    .container-registration{
+        width:100vw
+    }
+
+    .submit{
+        width:80vw
+    }
+}

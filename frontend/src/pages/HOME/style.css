@@ -1,0 +1,242 @@
+html{
+    font-size:62.5%
+}
+
+.flex-container-books {
+    margin: 5rem auto 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    align-items: center;
+    row-gap: 3rem;
+    column-gap: 2rem;
+    width: 97%;
+    max-width:1550px
+}
+
+.flex-book {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 45rem;
+    align-items: center;
+    text-align: start;
+    box-shadow: 3px 3px 3px rgb(234, 231, 231);
+    border-radius: 4px;
+    background-color: white;
+    transition: all 0.3s linear;
+}
+
+.flex-book-promotion{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 45rem;
+    align-items: center;
+    text-align: start;
+    box-shadow: 3px 3px 3px rgb(234, 231, 231);
+    border-radius: 4px;
+    background-color: white;
+    transition: all 0.3s linear;
+}
+
+.flex-book-promotion img{
+    width: 18rem;
+    height: 20rem;
+    background-color: rgb(250, 249, 248);
+    padding: 0 2.5rem;
+    margin:0 auto
+}
+
+
+.flex-book img {
+    width: 18rem;
+    height: 20rem;
+    background-color: rgb(250, 249, 248);
+    padding: 0 2.5rem;
+    margin:0 auto
+}
+
+.button {
+    height: 3rem;
+    border: 2px solid #fdd900;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+    background-color: #fdd900;
+    color: rgb(58, 58, 58);
+    transition: all 0.3s linear;
+    font-size: 1.3rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+}
+
+.button:hover{
+    background-color: white;
+}
+
+.flex-book:hover{
+    box-shadow: 8px 8px 8px rgb(234, 231, 231);
+}
+
+.flex-book p:nth-child(1) {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: black;
+}
+
+.flex-content-book {
+    font-size: 1rem;
+    display: grid;
+    width: 15rem;
+    grid-template-rows: 8rem 3rem 4rem 5rem 5rem;
+    font-size: 1.3rem;
+    color: rgb(76, 75, 75)
+}
+
+.flex-content-promotion-book {
+    font-size: 1rem;
+    display: grid;
+    width:15rem;
+    grid-template-rows: 5rem 3rem 3rem 3rem 1.6rem;
+    font-size: 1.3rem;
+    color: rgb(76, 75, 75)
+}
+
+.promotion {
+    background-color: rgb(77, 229, 77);
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+#book-promotion p:nth-child(2) {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    margin-top: .5rem;
+}
+
+#old-price {
+    font-size: 1.3rem;
+    color: rgb(76, 75, 75);
+    text-decoration: line-through;
+}
+
+@media (max-width:420px) {
+
+    .flex-book img{
+        width:22rem;
+        padding: 0 3.5rem;
+    }
+
+    .flex-book p:nth-child(1) {
+        font-size: 2rem;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    .flex-book p:nth-child(2) {
+        font-size: 1.8rem;
+        font-weight: bolder;
+        
+    }
+
+    .flex-book p:nth-child(3) {
+        font-size: 1.8rem;
+        font-weight: bolder;
+    }
+
+    .flex-book p:nth-child(4) {
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+
+    #old-price{
+        font-size:2rem
+    }
+
+    .price {
+        font-size: 2.8rem
+    }
+
+    .flex-content-book {
+        grid-template-rows: 5rem 6rem 6rem 8rem 5rem;
+       
+    }
+
+    .flex-content-promotion-book {
+        grid-template-rows: 5rem 4rem 6rem 8rem 4rem;
+    }
+
+    .flex-content-promotion-book p:nth-child(1){
+        font-size: 1.5rem;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    .flex-content-promotion-book p:nth-child(2){
+        font-size: 2rem !important;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    .flex-content-promotion-book p:nth-child(3){
+        font-size: 1.8rem ;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    .flex-content-promotion-book p:nth-child(4){
+        font-size: 1.8rem ;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    .flex-content-promotion-book p:nth-child(5){
+        font-size: 1.8rem ;
+        font-weight: bolder;
+        text-align: center;
+    }
+    .flex-content-promotion-book p:nth-child(6){
+        font-size: 1.8rem ;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    .name {
+        font-size:2rem
+    }
+    
+    .flex-book {
+        height: 50rem
+    }
+
+    .flex-book-promotion {
+        height: 60rem
+    }
+
+    .flex-content-book{
+        width:25rem;
+        text-align: center;
+    }
+
+    .flex-content-promotion-book{
+        width:25rem;
+    }
+    
+    .button{
+        width:100%;
+        height:3.5rem;
+        font-size: 1.8rem;
+    }
+
+    .cart{
+        font-size:2.2rem !important
+    }
+}

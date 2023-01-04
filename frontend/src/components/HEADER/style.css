@@ -1,0 +1,39 @@
+.cartIcon:hover{
+    color:rgb(84, 83, 83);
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+.title{
+    font-size:22px
+}
+
+.personIcon:hover{
+    color:rgb(84, 83, 83);
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+
+.flex-literatura a:after{
+    display: block;
+    content: '';
+    border-bottom: solid 2px rgb(139, 135, 135);
+    transform: scaleX(0);
+    transition: transform 300ms ease-in-out;
+}
+
+.flex-literatura a:hover:after {
+    transform: scaleX(1)
+}
+.flex-literatura a:hover{
+    color:black
+}
+
+
+.flex-literatura a {
+    text-decoration: none;
+    color: rgb(76, 75, 75);
+    transition: all 0.3s linear;
+    text-decoration:none;
+}
