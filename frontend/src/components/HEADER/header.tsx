@@ -173,10 +173,13 @@ export const Header = (props: any) => {
                   <SearchIconWrapper>
                     <SearchIcon sx={{ color: "black", fontSize:'22px' }} />
                   </SearchIconWrapper>
+                  <form method="GET" action="/search">
                   <StyledInputBase
+                    name="q"
                     placeholder="Search…"
                     inputProps={{ "aria-label": "search" }}
                   />
+                  </form>
                 </Search>
                 <Box
                   sx={{
@@ -353,10 +356,12 @@ export const Header = (props: any) => {
           >
             {list}
           </Drawer>
+          <Link to={'/login'}>
               <PersonIcon
                 className="personIcon"
                 sx={{ color: "black", fontSize: "30px" }}
               />
+              </Link>
             </Box>
             </Box>
             <Box

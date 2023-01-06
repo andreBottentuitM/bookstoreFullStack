@@ -18,11 +18,9 @@
     padding: 2rem;
     max-width:37rem;
     background-color: white;
-    transition: all 1s linear;
     border-radius: 6px 6px 0 0;
     box-shadow: 5px 5px 5px rgb(186, 184, 184);
     margin-left:2rem;
-    transition: all 1.3s linear
 }
 
 .price{

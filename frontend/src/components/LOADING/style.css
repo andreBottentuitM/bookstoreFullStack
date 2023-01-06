@@ -1,0 +1,45 @@
+.circleLoading{
+    width:5px;
+    height: 5px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fdd900;
+    left:15%;
+    transform-origin: 50%;
+    animation: circle .5s alternate infinite ease
+}
+
+@keyframes circle {
+    0% {
+        top:15px;
+        height:5px;
+        border-radius: 30px 30px 25px 25px;
+        transform: scaleX(1.7);
+    }
+    40% {
+        height:5px;
+        border-radius: 30px 30px 25px 25px;
+        transform: scaleX(1);
+    }
+    100% {
+        top:0%
+    }
+}
+
+.circleLoading:nth-child(2){
+    left:45%;
+    animation-delay: .2s;
+}
+
+.circleLoading:nth-child(3){
+    left:auto;
+    right: 15%;
+    animation-delay: .3s
+}
+
+.container-circles{
+   
+    width:55px;
+    height:20px;
+    position: relative;
+}

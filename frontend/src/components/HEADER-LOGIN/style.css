@@ -10,11 +10,17 @@ img{
 header{
     background-color: #fdd900;
     box-shadow: 5px 5px 5px rgb(186, 184, 184);
+}
+
+.container-header{
+    max-width:1550px;
+    margin:0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding:1rem 0
 }
+
 header a {
     margin-right:20px ;
     text-decoration: none;

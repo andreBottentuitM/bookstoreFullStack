@@ -6,6 +6,7 @@ import '../FOOTER/style.css'
 export const Footer = () => {
 return(
     <footer>
+        <div className="container-footer">
     <div className="header-footer">
     <img className="logo-footer" src="./IMAGES/logo.png" alt="Decow's Bookstore logotipo" title="Decow's Bookstore"/>
     <ul className="list-footer">
@@ -14,6 +15,8 @@ return(
             <li><a rel="noreferrer" href="https://www.instagram.com/andrebottentuit/" target="_blank"><InstagramIcon sx={{fontSize: {xs:'30px', md:'45px'}}}/></a></li>
         </ul> 
 </div>
+</div>
+<div className="container-footer-second">
 <div className="footer-information">
     <div>CONTATO: 
     <p>andre.bottentuit@gmail.com</p>
@@ -23,6 +26,8 @@ return(
 </div>
 <div>Produced by André Bottentuit</div>
 </div>
+</div>
+
 </footer>
 )
    

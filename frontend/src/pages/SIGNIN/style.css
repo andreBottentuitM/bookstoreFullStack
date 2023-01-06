@@ -19,6 +19,10 @@ section h1 {
     font-size:1.5rem !important;
 }
 
+.helper_text{
+    font-size:1.1rem !important
+}
+
 .submit {
     display: block;
     width: 41rem;

@@ -20,17 +20,15 @@ export const Home = () => {
           setBooks(slist)
         }
         getBooks()
-      })
+      },[])
     
 
     return (
         <>
         <Header />
+        <main>
             <div className="flex-container-books" id="books">
-            
             {bookList.map((i:any, k:number)=> {
-
-                
                return (
                 <>
                 {k === 0 && 
@@ -76,6 +74,7 @@ export const Home = () => {
             )
             })}
         </div>
+        </main>
         <Countdown />
         </>
     )

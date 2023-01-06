@@ -1,5 +1,5 @@
 import express from 'express'
-import {getBooks} from '../src/controllers/BooksController'
+import {getBooks,getSearch} from '../src/controllers/BooksController'
 const mongoose = require('mongoose')
 const router = express.Router()
 
@@ -9,5 +9,6 @@ router.get('/ping', (req,res) => {
 })
 
 router.get('/books', getBooks)
+router.get('/search', getSearch)
 
 export default router

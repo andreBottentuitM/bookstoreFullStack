@@ -2,6 +2,26 @@ html{
     font-size:62.5%
 }
 
+main {
+    min-height:100vh;
+    height:100%
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    z-index: 1;
+    background-color: rgb(250, 243, 243);
+    transition: all 0.3s linear;
+    
+}
+
 .flex-container-books {
     margin: 5rem auto 5rem;
     display: grid;
@@ -104,7 +124,7 @@ html{
     font-size: 1rem;
     display: grid;
     width:15rem;
-    grid-template-rows: 5rem 3rem 3rem 3rem 1.6rem;
+    grid-template-rows: 4rem 3rem 3rem 3rem 1.6rem;
     font-size: 1.3rem;
     color: rgb(76, 75, 75)
 }
