@@ -41,6 +41,7 @@ useEffect(()=> {
     return(
         <>
         <Header />
+        <main>
         {loading && <div>CARREGANDO...</div>}
         {!loading && searchList.length === 0 && <div>Nada encontrado.</div>}
         <div className="flex-container-books" id="books">
@@ -66,7 +67,7 @@ useEffect(()=> {
             
         })}
         </div>
-       
+        </main>
         </>
     )
 }

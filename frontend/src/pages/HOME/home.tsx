@@ -32,7 +32,7 @@ export const Home = () => {
                return (
                 <>
                 {k === 0 && 
-                    <section id="book-promotion">
+                    <section key={i} id="book-promotion">
                     <article>
                         <div className="flex-book-promotion">
                             <img src={i.image} alt="Guerra e paz"/>
@@ -52,7 +52,7 @@ export const Home = () => {
                   </section>
                 }
                 {k!== 0 && 
-                <section>
+                <section key={i}>
                 <article>
                <div className="flex-book">
                    <img src={i.image} alt={i.name}/>

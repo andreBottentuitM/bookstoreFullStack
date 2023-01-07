@@ -8,7 +8,8 @@ const modelSchema = new mongoose.Schema({
     capa: String,
     author:String,
     format: String,
-    price: Number
+    price: Number,
+    lecture: String
 })
 
 const modelName = 'Book'

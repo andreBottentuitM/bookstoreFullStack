@@ -115,10 +115,10 @@ export const Header = (props: any) => {
         </IconButton>
       </Box>
       <List>
-        {pages.map((item) => (
-          <ListItem key={item} disablePadding>
+        {pages.map((item, i) => (
+          <ListItem key={i} disablePadding>
             <ListItemButton sx={{ textAlign: "center", fontFamily: "Raleway", fontSize:"18px" }}>
-              {item}
+            <Link style={{textDecoration: 'none', color:'black'}} to={`/livros/${item.replace(' ', '-').toLowerCase()}`}>{item}</Link>
             </ListItemButton>
           </ListItem>
         ))}
@@ -170,10 +170,10 @@ export const Header = (props: any) => {
                 }}
               >
                 <Search>
+                  <form method="GET" action="/search">
                   <SearchIconWrapper>
                     <SearchIcon sx={{ color: "black", fontSize:'22px' }} />
                   </SearchIconWrapper>
-                  <form method="GET" action="/search">
                   <StyledInputBase
                     name="q"
                     placeholder="Search…"
@@ -238,7 +238,8 @@ export const Header = (props: any) => {
                   fontSize: "20px",
                 }}
               >
-                {pages.map((item) => (
+                {pages.map((item, index) => (
+
                   <ListItem
                     sx={{
                       display: "flex",
@@ -246,10 +247,10 @@ export const Header = (props: any) => {
                       marginLeft: "-10px",
                       fontSize:'1.8rem'
                     }}
-                    key={item}
+                    key={index}
                     disablePadding
                   >
-                    <a href="#">{item}</a>
+                    <Link to={`/livros/${item.replace(' ', '-').toLowerCase()}`}>{item}</Link>
                   </ListItem>
                 ))}
               </List>
@@ -372,13 +373,16 @@ export const Header = (props: any) => {
               }}
             >
               <Search>
+              <form method="GET" action="/search">
                 <SearchIconWrapper>
                   <SearchIcon sx={{ color: "black" }} />
                 </SearchIconWrapper>
                 <StyledInputBase
+                  name="q"
                   placeholder="Search…"
                   inputProps={{ "aria-label": "search" }}
                 />
+                </form>
               </Search>
             </Box>
           </Box>

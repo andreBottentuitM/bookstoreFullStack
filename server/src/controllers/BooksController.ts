@@ -12,6 +12,7 @@ import mongoose from 'mongoose'
     export const getSearch = async (req:Request, res:Response) => {
         
         let valueSearch = req.query.value
+        
            let filtersName:any = {}
            let filtersAuthor:any = {}
         if(valueSearch){
@@ -22,5 +23,20 @@ import mongoose from 'mongoose'
         const searchName = await Book.find({'$or':[{name:{'$regex': valueSearch, '$options': 'i'}},{author:{'$regex': valueSearch, '$options': 'i'}}]}).exec()
 
         res.json({searchName})
+    }
+
+    export const getLecture = async (req:Request, res:Response) => {
+        
+  let lectureType = req.query.value
+  let filtersLecture:any = {}
+
+  if(lectureType){
+    filtersLecture.lecture = {'$regex': lectureType, '$options': 'i'}
+  }
+  
+  const lectureTypeDB = await Book.find(filtersLecture).exec()
+
+  res.json({lectureTypeDB})
+
     }
 
