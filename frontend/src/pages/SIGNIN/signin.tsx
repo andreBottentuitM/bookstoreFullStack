@@ -4,11 +4,10 @@ import "../SIGNIN/style.css";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "../LOGIN/login";
+import { theme } from "../../components/theme";
 import { Masks } from "../../helpers/masks";
 import {Loading} from '../../components/LOADING/loading'
 import {Errors} from '../../helpers/validation'
-import { stripBasename } from "@remix-run/router";
 
 export const Signin = () => {
   const [name, setName] = useState('')

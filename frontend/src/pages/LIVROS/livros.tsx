@@ -1,5 +1,7 @@
 import {Header} from '../../components/HEADER/header'
-import {useLocation, useNavigate, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
+import {useContext} from 'react'
+import {BookstoreContext} from '../../context/context'
 import useApi from '../../helpers/bookstoreApi' 
 import {useState,useEffect} from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -8,18 +10,19 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export const Livros = () => {
 
-   
+    const { addToCart } = useContext(BookstoreContext);
+    
     let lectureType = useParams()
     const api = useApi()
     const [lecture, setLecture] = useState<any>( lectureType.id !== null ? lectureType.id : '')
     const [bookList, setBookList] = useState<any>([])
+    
    
     const getLectures = async () => {
         const json = await api.getLecture({value:lecture} as any)
         setBookList(json.lectureTypeDB)
     }
-    
-
+  
     useEffect(()=> {
         getLectures()
      }, [lecture])
@@ -28,7 +31,6 @@ export const Livros = () => {
         setLecture(lectureType.id)
      }, [lectureType])
 
-   
     return (
        <>
         <Header />
@@ -45,7 +47,9 @@ export const Livros = () => {
                        <p>Autor: {i.author}</p>
                        <p>Formato: {i.format}</p>
                        <p>POR: <span className='price'>R${i.price.toFixed(2)}</span></p>
-                       <button className='button'>
+                       <button onClick ={() => {
+                        addToCart(i)
+                       }} className='button'>
                        <ShoppingCartIcon className="cart"/>
                            Carrinho</button>
                    </div>

@@ -1,19 +1,12 @@
 import {HeaderLogin} from '../../components/HEADER-LOGIN/headerLogin'
-import { styled } from '@mui/material/styles';
-import { createTheme, ThemeProvider  } from '@mui/material/styles';
+import { ThemeProvider  } from '@mui/material/styles';
+import {theme} from '../../components/theme'
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import TextField from '@mui/material/TextField';
 import {Link} from 'react-router-dom'
 import '../LOGIN/style.css'
 
-export const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#fdd900',
-      },
-    },
-  });
 
 
 
@@ -30,7 +23,7 @@ export const Login = () => {
                     <EmailIcon className="icon-login" sx={{fontSize:"25px"}}/>
                     <ThemeProvider theme={theme}>
                     <TextField
-                    sx={{width:{sm:'100%',xs:"70vw"}}}  
+          sx={{width:{sm:'100%',xs:"70vw"}}}  
           className="textfield"
           InputLabelProps={{className:'textfield__label'}}
           InputProps={{className:'textfield__input'}}
@@ -40,6 +33,7 @@ export const Login = () => {
           type="email"
           variant="standard"
           fullWidth
+          color='primary'
           
         />
         </ThemeProvider>

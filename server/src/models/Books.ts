@@ -9,7 +9,8 @@ const modelSchema = new mongoose.Schema({
     author:String,
     format: String,
     price: Number,
-    lecture: String
+    lecture: String,
+    quantity: Number
 })
 
 const modelName = 'Book'

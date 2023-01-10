@@ -4,9 +4,14 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {Header} from '../../components/HEADER/header'
 import {Countdown} from '../../components/COUNTDOWN/countdown'
 
+import {useContext} from 'react'
+import {BookstoreContext} from '../../context/context'
+
 import '../HOME/style.css'
 
 export const Home = () => {
+
+    const { addToCart } = useContext(BookstoreContext);
 
     const api = useApi()
 
@@ -43,7 +48,9 @@ export const Home = () => {
                                 <p>Formato: {i.format}</p>
                                 <p>DE: <span id="old-price">R$67.99</span></p>
                                 <p>POR: <span className="price">R${i.price.toFixed(2)}</span></p>
-                                <button className='button'>
+                                <button className='button' onClick ={() => {
+                        addToCart(i)
+                       }}>
                                 <ShoppingCartIcon className="cart"/>
                                     Carrinho</button>
                             </div>
@@ -61,7 +68,9 @@ export const Home = () => {
                        <p>Autor: {i.author}</p>
                        <p>Formato: {i.format}</p>
                        <p>POR: <span className='price'>R${i.price.toFixed(2)}</span></p>
-                       <button className='button'>
+                       <button className='button' onClick ={() => {
+                        addToCart(i)
+                       }}>
                        <ShoppingCartIcon className="cart"/>
                            Carrinho</button>
                    </div>
