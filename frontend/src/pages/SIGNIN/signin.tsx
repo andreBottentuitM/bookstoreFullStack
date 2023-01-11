@@ -38,8 +38,11 @@ export const Signin = () => {
   const [textEmail, setTextEmail] = useState('')
   const [textPassword, setTextPassword] = useState('')
   const [textConfirmPassword, setTextConfirmPassword] = useState('')
-  
 
+  
+  
+  
+  
     const getCep  = (cepTyped:string)  =>  {
       let cepClone = Masks.cep(cepTyped)
       setCep(cepClone)

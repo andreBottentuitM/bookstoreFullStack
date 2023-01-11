@@ -1,6 +1,8 @@
+
 import qs from 'qs'
 
 const BASEAPI = 'http://localhost:5001'
+
 const apiFetchGet = async (endPoint:string, body = []) => {
     
     
@@ -8,6 +10,28 @@ const apiFetchGet = async (endPoint:string, body = []) => {
    const json = await res.json()
  
    return json
+
+}
+
+const apiFetchPost = async (endPoint:string/*url */, body:{}/*informação passada pelo usuário */) => {
+     
+   
+   const res = await fetch(BASEAPI+endPoint, {
+      method:'POST',
+      headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+   })
+    const json = await res.json()
+    
+    if(json.notallowed) {
+      window.location.href = '/signin'
+      return
+    }
+
+    return json
 
 }
 
@@ -35,6 +59,15 @@ const bookstoreApi = {
       const json = await apiFetchGet(
           '/lecture',
           lectureType as any
+      )
+      return json
+   },
+   login: async (email:string, password:string) => {
+      // fazer consulta ao webservice
+      
+      const json = await apiFetchPost(
+       '/user/signin',
+       {email, password}
       )
       return json
    }

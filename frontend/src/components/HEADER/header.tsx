@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useState} from 'react'
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -40,7 +41,7 @@ const pages = [
 
 export const Header = (props: any) => {
 
-  const { totalCart, deleteItem } = useContext(BookstoreContext);
+  const { totalCart, deleteItem, setCart, totalValueCart } = useContext(BookstoreContext);
  
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -83,9 +84,9 @@ export const Header = (props: any) => {
   }));
   
 
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [state, setState] = React.useState(false);
+ 
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [state, setState] = useState(false);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -149,7 +150,15 @@ export const Header = (props: any) => {
     </Box>
   );
 
-  const list = (
+  const handleChange = (e: SelectChangeEvent, item:any) => {
+      let totalCartClone = totalCart
+      let indice = totalCartClone.indexOf(item)
+      totalCartClone[indice].quantityAtCart = e.target.value
+      setCart([...totalCartClone])
+      localStorage.setItem('cartItems', JSON.stringify([...totalCartClone]))
+  };
+
+  const sidebar = (
     <Box
       role="presentation"
       sx={{
@@ -167,20 +176,20 @@ export const Header = (props: any) => {
           backgroundColor: "#fdd900",
         }}
       >
-        <ImportContactsOutlinedIcon sx={{ fontSize: "40px" }} />
+        <ImportContactsOutlinedIcon sx={{ fontSize: "40px", marginLeft:'10px' }} />
         <h1 className="title">Seus Livros</h1>
         <IconButton onClick={toggleDrawer(false)} sx={{color:'black'}}>
         <ArrowForwardOutlinedIcon  sx={{ fontSize: "40px" }} />
         </IconButton>
       </Box>
-      <Box className="container-all-sections">
+      <aside className="container-all-sections">
       {totalCart.map((item:any, k:number)=> {
         let quantity = []
 
         for(let i = 1; i <= item.quantity; i++){
           quantity.push(i)
         }
-
+        
          return(
           <section className="style-books-cart">
             <img src={item.image} alt={item.name}/>
@@ -194,13 +203,13 @@ export const Header = (props: any) => {
           sx={{fontSize:'14px'}}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          
-          //onChange={handleChange}
+          value={item.quantityAtCart}
+          onChange={(e) => handleChange(e,item)}
         >
           
-    {quantity.map((number)=> {
+    {quantity.map((number,k)=> {
       return (
-        <MenuItem sx={{fontSize:'16px'}} value={number}>{number}</MenuItem>
+        <MenuItem sx={{fontSize:'16px'}} key={k} value={number}>{number}</MenuItem>
       )
     })}
   </Select>
@@ -209,10 +218,13 @@ export const Header = (props: any) => {
   <IconButton onClick={() => deleteItem(item)} sx={{color:'black', left:'10px', top:'5px', position:'relative'}}><DeleteForeverIcon sx={{fontSize:"25px"}}/></IconButton> </label>
 </div>
 </section>
-
          )
       })}
-      </Box>
+       <section className="totalValue">
+                    <div><p>VALOR TOTAL:</p><span>R${totalValueCart.toFixed(2)}</span></div>
+                    <button className="button-purchase">Finalizar Compra</button>
+                </section>
+      </aside>
     </Box>
   );
 
@@ -422,7 +434,7 @@ export const Header = (props: any) => {
                   open={state}
                  // onClose={toggleDrawer(false)}
                 >
-                  {list}
+                  {sidebar}
                 </Drawer>
                 <Link to={"/login"}>
                   <PersonIcon

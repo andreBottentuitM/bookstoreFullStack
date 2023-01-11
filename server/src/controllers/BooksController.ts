@@ -1,6 +1,5 @@
 import {Request, Response} from 'express'
 const Book = require('../models/Books')
-import mongoose from 'mongoose'
     
     export const getBooks = async (req:Request, res:Response) => {
         

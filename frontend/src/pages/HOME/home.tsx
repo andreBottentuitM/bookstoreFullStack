@@ -35,9 +35,9 @@ export const Home = () => {
             <div className="flex-container-books" id="books">
             {bookList.map((i:any, k:number)=> {
                return (
-                <>
+                <div key={k}>
                 {k === 0 && 
-                    <section key={i} id="book-promotion">
+                    <section key={k} id="book-promotion">
                     <article>
                         <div className="flex-book-promotion">
                             <img src={i.image} alt="Guerra e paz"/>
@@ -59,7 +59,7 @@ export const Home = () => {
                   </section>
                 }
                 {k!== 0 && 
-                <section key={i}>
+                <section>
                 <article>
                <div className="flex-book">
                    <img src={i.image} alt={i.name}/>
@@ -78,8 +78,7 @@ export const Home = () => {
             </article>
             </section>
                 }
-               
-            </>
+               </div>
             )
             })}
         </div>

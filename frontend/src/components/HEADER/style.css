@@ -57,7 +57,7 @@
     justify-content: flex-start;
     align-items: start;
     border-bottom: 1px solid rgb(211, 209, 209);
-    padding: 1rem 0;
+    padding-top: 1rem;
     width: 98%;
     color: black;
     gap:1rem;
@@ -88,6 +88,35 @@
     max-height:50vh;
 }
 
+.totalValue{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom:0;
+    width:100%;
+    margin-top:3rem;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: white;
+    padding: 2rem 0;
+    color:black;
+    box-shadow: 3px -2px 2px rgb(227, 224, 224);
+}
+.totalValue div{
+  margin: 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap:1rem
+}
+
+
+
+.totalValue span{
+    text-align: center;
+    font-size: 2.2rem;
+    margin-right:10px
+}
+
 .flex-center-content-books-cart {
     display: flex;
     flex-direction: column;
@@ -98,4 +127,25 @@
 .priceCart {
     font-weight: normal;
     font-size: 1.5rem;
+}
+
+.button-purchase{
+    display: block;
+    font-size: 1.5rem;
+    margin: 20px auto;
+    padding: 1.5rem 2rem;
+    border-radius: .3rem;
+    border: none;
+    font-weight: bolder;
+    background-color: #fdd900;
+    color:black;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    border:  white 2px solid;
+}
+
+.button-purchase:hover{
+    color:black;
+    background-color: white;
+    border: #fdd900 2px solid;
 }
