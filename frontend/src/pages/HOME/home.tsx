@@ -3,6 +3,7 @@ import useApi from '../../helpers/bookstoreApi'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {Header} from '../../components/HEADER/header'
 import {Countdown} from '../../components/COUNTDOWN/countdown'
+import {ToastContainer, toast} from 'react-toastify'
 
 import {useContext} from 'react'
 import {BookstoreContext} from '../../context/context'
@@ -26,6 +27,11 @@ export const Home = () => {
         }
         getBooks()
       },[])
+
+      const clearWaitingQueue = () => {
+        
+        return toast.clearWaitingQueue();
+      }
     
 
     return (
@@ -70,6 +76,7 @@ export const Home = () => {
                        <p>POR: <span className='price'>R${i.price.toFixed(2)}</span></p>
                        <button className='button' onClick ={() => {
                         addToCart(i)
+                        clearWaitingQueue()
                        }}>
                        <ShoppingCartIcon className="cart"/>
                            Carrinho</button>
@@ -83,6 +90,7 @@ export const Home = () => {
             })}
         </div>
         </main>
+        <ToastContainer limit={3} />
         <Countdown />
         </>
     )

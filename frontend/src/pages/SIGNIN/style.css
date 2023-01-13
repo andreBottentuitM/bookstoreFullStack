@@ -19,6 +19,10 @@ section h1 {
     font-size:1.5rem !important;
 }
 
+.Toastify__toast--error {
+    font-size:16px
+}
+
 .helper_text{
     font-size:1.1rem !important
 }

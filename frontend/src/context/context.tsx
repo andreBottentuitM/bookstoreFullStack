@@ -1,4 +1,5 @@
 import {createContext, useEffect, useState} from 'react'
+import {ToastContainer, toast } from 'react-toastify'
 
 
 export const BookstoreContext = createContext<any>(undefined)
@@ -26,12 +27,15 @@ const BookstoreContextProvider = (props:any) => {
        const findingItem = totalCartClone.find((x:any) => x._id === item._id)
        
        if(!findingItem || undefined){
+        
         let cloneBook = item
         cloneBook.quantityAtCart = 1
           totalCartClone.push(cloneBook)
           localStorage.setItem('cartItems', JSON.stringify(totalCartClone))
           setCart(JSON.parse(localStorage.getItem('cartItems') as any))
+          return toast.success('Produto adicionado ao carrinho com sucesso!',{position: "top-right",autoClose: 2500})
        }
+       return toast.info('Produto já adicionado!',{position:"bottom-center",autoClose: 2500, hideProgressBar: true})
     }
 
     const deleteItem = (item:any) => {

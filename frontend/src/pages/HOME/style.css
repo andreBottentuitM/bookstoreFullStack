@@ -148,6 +148,10 @@ body {
     text-decoration: line-through;
 }
 
+.Toastify__toast--success, .Toastify__toast--info {
+    font-size:13px
+}
+
 @media (max-width:420px) {
 
     .flex-book img{

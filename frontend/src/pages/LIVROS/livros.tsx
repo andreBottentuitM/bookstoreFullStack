@@ -1,5 +1,6 @@
 import {Header} from '../../components/HEADER/header'
 import {useParams} from 'react-router-dom'
+import {ToastContainer} from 'react-toastify'
 import {useContext} from 'react'
 import {BookstoreContext} from '../../context/context'
 import useApi from '../../helpers/bookstoreApi' 
@@ -56,11 +57,13 @@ export const Livros = () => {
                </div>
             </article>
             </section>
+            
             )
             
         })}
         </div>
         </main>
+        <ToastContainer limit={1}/>
         </>
     )
 }

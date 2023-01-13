@@ -1,15 +1,22 @@
 import { HeaderLogin } from "../../components/HEADER-LOGIN/headerLogin";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../SIGNIN/style.css";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
+import useApi from '../../helpers/bookstoreApi' 
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "../../components/theme";
 import { Masks } from "../../helpers/masks";
-import {Loading} from '../../components/LOADING/loading'
+import {LoadingCep} from '../../components/LOADING/loading'
+import CircularProgress from '@mui/material/CircularProgress'
 import {Errors} from '../../helpers/validation'
+import {ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const Signin = () => {
+
+  const api = useApi()
+
   const [name, setName] = useState('')
   const [cpf, setCpf] = useState("");
   const [phone, setPhone] = useState("");
@@ -25,9 +32,11 @@ export const Signin = () => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const [disabled, setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState(false)
+  const [disabledAddress, setDisabledAddress] = useState(true)
 
-  const [loading, setLoading] = useState(false)
+  const [loadingCep, setLoadingCep] = useState(false)
+  const [loadingForm, setLoadingForm] = useState(false)
 
   const [resultCep, setResultCep] = useState('')
 
@@ -38,20 +47,17 @@ export const Signin = () => {
   const [textEmail, setTextEmail] = useState('')
   const [textPassword, setTextPassword] = useState('')
   const [textConfirmPassword, setTextConfirmPassword] = useState('')
-
-  
-  
-  
   
     const getCep  = (cepTyped:string)  =>  {
       let cepClone = Masks.cep(cepTyped)
       setCep(cepClone)
-      
+      setDisabledAddress(true)
       if (cepClone.length === 9){
         
-          setLoading(true)
+        setLoadingCep(true)
         
         setTimeout( async () => {
+          
         const apiUrl = `https://viacep.com.br/ws/${cepClone}/json/`;
         
         const response = await fetch(apiUrl);
@@ -72,7 +78,7 @@ export const Signin = () => {
         setNeighbourhood('')
         setState('')
 
-        setDisabled(true)
+        setDisabledAddress(true)
         
        }else{
         setStreet(data.logradouro)
@@ -80,17 +86,48 @@ export const Signin = () => {
         setNeighbourhood(data.bairro)
         setState(data.uf)
 
-        setDisabled(false)
+        setDisabledAddress(false)
         
       }
-      setLoading(false)
+      setLoadingCep(false)
       
       },2000)
       }
       
     }
+    
+    const handleSubmit = async (e:any) => {
+      e.preventDefault()
+      setLoadingForm(true)
+    
+     // setError('')
+      
+      if(password !== confirmPassword){
+       setDisabled(false)
+       return
+      }
+ 
+    const json = await api.register({name, cpf, phone,email,cep,street,numberResidence,complement,city,neighbourhood,state,date,password})
+    
+    if(json.error){
+      setDisabled(false)
+     setLoadingForm(false)
+      toast.error(json.error)
+      return
+    }
+
+    window.location.href = '/login'
   
-  
+/*
+     if(json.error) {
+       setError(json.error)
+     } else {
+       doLogin(json.token)
+       window.location.href = '/'
+     }
+     
+     */
+   }
 
   return (
     <>
@@ -98,7 +135,7 @@ export const Signin = () => {
       <main>
         <section className="container-registration">
           <h1>Criar Conta</h1>
-          <form action="">
+          <form onSubmit={handleSubmit} autoComplete="off">
             <Grid
               container
               spacing={2}
@@ -275,7 +312,7 @@ export const Signin = () => {
                     InputProps={{ className: "textfield_input" }}
                   />
                 </ThemeProvider>
-                {loading && <Loading/>}
+                {loadingCep && <LoadingCep/>}
                 <div style={{color:'red', font:'bolder',margin:'2px 0 0'}}>{resultCep}</div>
               </Grid>
               <Grid item xs={10} sm={5}>
@@ -290,7 +327,7 @@ export const Signin = () => {
                     value={street}
                     variant="standard"
                     InputProps={{ className: "textfield_input" }}
-                    disabled={disabled}
+                    disabled={disabledAddress}
                   />
                 </ThemeProvider>
               </Grid>
@@ -306,7 +343,7 @@ export const Signin = () => {
                     placeholder="Número da Residência"
                     variant="standard"
                     InputProps={{ className: "textfield_input" }}
-                    disabled={disabled}
+                    disabled={disabledAddress}
                   />
                 </ThemeProvider>
               </Grid>
@@ -322,7 +359,7 @@ export const Signin = () => {
                     placeholder="Complemento"
                     variant="standard"
                     InputProps={{ className: "textfield_input" }}
-                    disabled={disabled}
+                    disabled={disabledAddress}
                   />
                 </ThemeProvider>
               </Grid>
@@ -338,7 +375,7 @@ export const Signin = () => {
                     placeholder="Bairro"
                     variant="standard"
                     InputProps={{ className: "textfield_input" }}
-                    disabled={disabled}
+                    disabled={disabledAddress}
                   />
                 </ThemeProvider>
               </Grid>
@@ -354,7 +391,7 @@ export const Signin = () => {
                     }}
                     variant="standard"
                     InputProps={{ className: "textfield_input" }}
-                    disabled={disabled}
+                    disabled={disabledAddress}
                   />
                 </ThemeProvider>
               </Grid>
@@ -370,14 +407,20 @@ export const Signin = () => {
                     }}
                     variant="standard"
                     InputProps={{ className: "textfield_input" }}
-                    disabled={disabled}
+                    disabled={disabledAddress}
                   />
                 </ThemeProvider>
               </Grid>
             </Grid>
-            <button type="submit" className="submit">
-              CADASTRAR
+            <button type="submit" className="submit" disabled={disabled}>
+              {loadingForm && <CircularProgress size={'30px'} sx={{color:'black'}}/>}
+              {!loadingForm && 'CADASTRAR'}
             </button>
+            
+            <ToastContainer 
+            position="bottom-center"
+            font-size="500px"
+            />
           </form>
         </section>
       </main>

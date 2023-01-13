@@ -1,6 +1,6 @@
 import '../LOADING/style.css'
 
-export const Loading = () => {
+export const LoadingCep = () => {
     return (
         <div className="container-circles">
         <div className="circleLoading"></div>

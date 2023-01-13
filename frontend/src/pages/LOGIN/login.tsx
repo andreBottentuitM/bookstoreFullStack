@@ -27,7 +27,6 @@ export const Login = () => {
  
        const json = await api.login(email,password)
 
-       console.log(json)
       /* 
        if(json.error) {
          setError(json.error)
